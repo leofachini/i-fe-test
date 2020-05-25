@@ -1,0 +1,26 @@
+:host {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  #loginPage {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    width: 1024px;
+    h1 {
+      color: var(--primary-color);
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  :host {
+    #loginPage {
+      width: 100%;
+    }
+  }
+}

@@ -1,16 +1,26 @@
-<form action="">
-  <input
-    type="text"
-    />
-  <input
-    type="password"
-    />
-  <input
-    type="text"
-    />
+
+<form
+  id="loginForm"
+  action="">
+  <mat-form-field>
+    <mat-label>Username</mat-label>
+    <input
+      type="text"
+      matInput>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input
+      type="password"
+      matInput>
+    <input
+      *ngIf="hidePassword"
+      type="text"
+      matInput>
+  </mat-form-field>
   <button
-    >
-    <!-- TODO: Add i18n -->
+    color="primary"
+    mat-raised-button>
     Login
   </button>
 </form>

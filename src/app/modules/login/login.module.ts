@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { LoginFormComponent } from './components/login-form.component';
 import { LoginPage } from './login.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LoginPage } from './login.page';
     RouterModule.forChild([{
       path: '',
       component: LoginPage,
-    }])
+    }]),
+    SharedModule,
   ],
 })
 export class LoginModule {}

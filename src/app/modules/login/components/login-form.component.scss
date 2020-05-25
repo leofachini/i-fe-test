@@ -1,0 +1,21 @@
+:host {
+  width: 500px;
+  #loginForm {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: center;
+    padding: 30px 15px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 499px) {
+  :host {
+    width: 100%;
+    #loginForm {
+      padding: 0;
+    }
+  }
+}
