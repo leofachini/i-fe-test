@@ -3,17 +3,24 @@
   id="loginForm"
   action="">
   <mat-form-field>
-    <mat-label>Username</mat-label>
+    <mat-label for="username">Username</mat-label>
     <input
+      id="username"
+      name="username"
       type="text"
       matInput>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Password</mat-label>
+    <mat-label
+      for="password">Password</mat-label>
     <input
+      id="password"
+      name="password"
       type="password"
       matInput>
     <input
+      id="revealedPassword"
+      name="revealedPassword"
       *ngIf="hidePassword"
       type="text"
       matInput>
