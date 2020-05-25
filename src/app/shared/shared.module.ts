@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
@@ -8,12 +8,13 @@ import {
   MatLabel,
   MatButton,
 } from '@angular/material';
+import { NgModule } from '@angular/core';
 
 const COMPONENTS = [
   MatButton,
   MatFormField,
-  MatLabel,
   MatInputModule,
+  MatLabel,
 ];
 
 
@@ -21,6 +22,7 @@ const COMPONENTS = [
   declarations: [],
   imports: [
     CommonModule,
+    BrowserAnimationsModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
