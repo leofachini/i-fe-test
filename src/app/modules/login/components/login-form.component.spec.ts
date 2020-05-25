@@ -66,4 +66,15 @@ describe('LoginFormComponent', () => {
     expect(passwordLabel.textContent).toEqual(labelText);
   });
 
+  it('should have a Login submit button', () => {
+    fixture.detectChanges();
+
+    const labelText = 'Login';
+
+    const submitButton = de.query(By.css('form#loginForm button#loginButton[mat-raised-button][type=submit]')).nativeElement;
+
+    expect(submitButton).toBeTruthy();
+    expect(submitButton.textContent).toEqual(labelText);
+  });
+
 });
