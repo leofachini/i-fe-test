@@ -1,15 +1,6 @@
 :root {
-  // Light Mode Colors
-  --primary-color-light-mode: #f1faee;
-  --secondary-color-light-mode: #1d3557;
-  --terciary-color-light-mode: #457b9d;
-  --quaternary-color-light-mode: #a8dadc;
-  --destak-color-light-mode: #e63946;
 
-  // Darkmode colors
-  --primary-color-dark-mode: #1d3557;
-  --secondary-color-dark-mode: #f1faee;
-  --terciary-color-dark-mode: #a8dadc;
-  --quaternary-color-dark-mode: #457b9d;
-  --destak-color-dark-mode: #e63946;
+  $light-gray: #fefefe;
+
+  --bg-color: $light-gray;
 }
