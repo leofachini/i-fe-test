@@ -1,0 +1,56 @@
+
+<form
+  [formGroup]="loginForm"
+  (ngSubmit)="submitForm()"
+  id="loginForm">
+  <mat-form-field>
+    <mat-label for="username">Username</mat-label>
+    <input
+      id="username"
+      formControlName="username"
+      name="username"
+      placeholder="Type your username here!"
+      type="text"
+      matInput>
+    <button
+      *ngIf="loginForm.controls.username.value"
+      (click)="loginForm.controls.username.setValue('')"
+      class="suffix-button"
+      aria-label="Clear username"
+      tabindex="-1"
+      type="button">
+      <fa-icon [icon]="faTimes"></fa-icon>
+    </button>
+    <mat-error *ngIf="loginForm?.controls?.username?.errors?.required">You must inform your username!</mat-error>
+    <mat-error *ngIf="loginForm?.controls?.username?.errors?.minlength">Your username is too short!</mat-error>
+    <mat-error *ngIf="loginForm?.controls?.username?.errors?.maxlength">Your username is too long!</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label
+      for="password">Password</mat-label>
+    <input
+      id="password"
+      [type]="hidePassword ? 'password' : 'text'"
+      formControlName="password"
+      placeholder="Type your password here!"
+      name="password"
+      matInput>
+    <button
+      (click)="hidePassword = !hidePassword"
+      class="suffix-button"
+      aria-label="Toogle password visibility"
+      tabindex="-1"
+      type="button">
+      <fa-icon [icon]="hidePassword ? faEyeSlash : faEye"></fa-icon>
+    </button>
+    <mat-error *ngIf="loginForm?.controls?.password?.errors?.required">You must inform your password!</mat-error>
+    <mat-error *ngIf="loginForm?.controls?.password?.errors?.minlength">Your password is too short!</mat-error>
+    <mat-error *ngIf="loginForm?.controls?.password?.errors?.maxlength">Your password is too long!</mat-error>
+  </mat-form-field>
+  <button
+    id="loginButton"
+    color="primary"
+    type="submit"
+    aria-label="Login into MyFlix"
+    mat-raised-button>Login</button>
+</form>

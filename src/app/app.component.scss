@@ -1,0 +1,9 @@
+:host {
+  background-color: var(--bg-color);
+  display: grid;
+  grid-template-rows: 80px 1fr;
+  height: 100%;
+  router-outlet {
+    display: none;
+  }
+}
