@@ -33,6 +33,7 @@ $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 :root {
   --primary-color: #{mat-color($light-app-primary)};
   --secondary-color: #{mat-color($light-app-accent)};
+  --warn-color: #{mat-color($dark-warn)};
 }
 
 button.suffix-button {
@@ -47,5 +48,12 @@ button.suffix-button {
   width: 15px;
   &:hover {
     outline: none;
+  }
+}
+
+.myflix-snack-bar {
+  &.warning {
+    background-color: var(--warn-color);
+    color: white;
   }
 }

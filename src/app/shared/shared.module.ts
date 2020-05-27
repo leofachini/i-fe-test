@@ -8,6 +8,7 @@ import {
   MatInput,
   MatInputModule,
   MatLabel,
+  MatSnackBarModule,
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -30,6 +31,7 @@ const COMPONENTS = [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSnackBarModule,
   ],
   exports: [
     FontAwesomeModule,

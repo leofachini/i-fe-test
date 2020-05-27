@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
+
+import { AuthService } from 'src/app/services';
+import { Credential } from  '../../models/credential.model';
 
 @Component({
   selector: 'login-page',
@@ -7,7 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _authService: AuthService,
+    private _snackBar: MatSnackBar,
+  ) { }
 
   ngOnInit(): void { }
+
+  login(credential: Credential): void {
+    const subscription = this._authService.login(credential)
+      .subscribe(() => {
+        // TODO: LFM - Route to main page
+      },this.handleError.bind(this));
+    subscription.unsubscribe();
+  }
+
+  handleError(error: Error): void {
+    this._snackBar.open(error.message, 'Ok', {
+      duration: 10000,
+      panelClass: ['myflix-snack-bar', 'warning'],
+    });
+  }
 }
