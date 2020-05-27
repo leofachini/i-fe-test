@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/services';
 import { Credential } from  '../../models/credential.model';
@@ -13,6 +14,7 @@ export class LoginPage implements OnInit {
 
   constructor(
     private _authService: AuthService,
+    private _router: Router,
     private _snackBar: MatSnackBar,
   ) { }
 
@@ -21,7 +23,7 @@ export class LoginPage implements OnInit {
   login(credential: Credential): void {
     const subscription = this._authService.login(credential)
       .subscribe(() => {
-        // TODO: LFM - Route to main page
+        this._router.navigate(['']);
       },this.handleError.bind(this));
     subscription.unsubscribe();
   }
