@@ -5,6 +5,12 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthService, ProfileService } from './services';
+
+const SERVICES = [
+  AuthService,
+  ProfileService,
+];
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,7 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserAnimationsModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [...SERVICES],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
