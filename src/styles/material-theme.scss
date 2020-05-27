@@ -34,3 +34,18 @@ $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
   --primary-color: #{mat-color($light-app-primary)};
   --secondary-color: #{mat-color($light-app-accent)};
 }
+
+button.suffix-button {
+  bottom: 7px;
+  color: rgba(0, 0, 0, 0.54);
+  cursor: pointer;
+  height: 18px;
+  margin: 0;
+  outline: none;
+  position: absolute;
+  right: 5px;
+  width: 15px;
+  &:hover {
+    outline: none;
+  }
+}

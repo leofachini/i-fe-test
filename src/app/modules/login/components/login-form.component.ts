@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
+
+import { Credential } from '../../../models/credential.model';
 
 @Component({
   selector: 'login-form',
@@ -7,10 +12,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginFormComponent implements OnInit {
 
-  hidePassword: boolean = false;
+  @Output()
+  onSubmit = new EventEmitter<Credential>();
 
-  constructor() { }
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
+  faTimes = faTimes;
+  hidePassword: boolean = true;
+  loginForm: FormGroup;
 
-  ngOnInit(): void { }
+  constructor(private fb: FormBuilder) { }
+
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(250)]],
+      password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(250)]],
+    });
+  }
+
+  submitForm(): void {
+    if (this.loginForm.valid) {
+      const credential = new Credential(this.loginForm.controls.username.value, this.loginForm.controls.password.value);
+      this.onSubmit.emit(credential);
+    }
+  }
 
 }

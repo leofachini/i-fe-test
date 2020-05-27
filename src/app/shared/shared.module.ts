@@ -1,33 +1,39 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import {
-  MatButtonModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatFormField,
-  MatLabel,
   MatButton,
+  MatButtonModule,
+  MatFormField,
+  MatFormFieldModule,
+  MatError,
+  MatInput,
+  MatInputModule,
+  MatLabel,
 } from '@angular/material';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const COMPONENTS = [
   MatButton,
+  MatError,
   MatFormField,
-  MatInputModule,
+  MatInput,
   MatLabel,
 ];
-
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
+    FontAwesomeModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
   ],
   exports: [
+    FontAwesomeModule,
+    ReactiveFormsModule,
     ...COMPONENTS,
   ],
 })

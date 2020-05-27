@@ -77,4 +77,23 @@ describe('LoginFormComponent', () => {
     expect(submitButton.textContent).toEqual(labelText);
   });
 
+  // TODO: LFM - Increase test coverage from login-form
+  // We must validate the following points:
+  // Username input:
+  //  - MaxLength of username error
+  //  - MinLength of username error
+  //  - Required username error
+  //  - Clear username input button
+  //
+  // Password input:
+  //  - MaxLength of password error
+  //  - MinLength of password error
+  //  - Required password error
+  //  - Toogle password input visibility
+  //
+  // Form:
+  //  - Make sure errors appear after form submit
+  //  - Make sure if form is valid the onSubmit event is emmited
+
+
 });

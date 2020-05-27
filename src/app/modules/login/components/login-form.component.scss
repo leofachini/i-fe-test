@@ -8,6 +8,12 @@
     justify-content: center;
     padding: 30px 15px;
     width: 100%;
+    mat-form-field {
+      margin-bottom: 15px;
+    }
+    button {
+      margin-top: 20px;
+    }
   }
 }
 
