@@ -1,2 +1,13 @@
-<header></header>
+<header *ngIf="activeProfile">
+  <div class="header-content">
+    <!-- TODO: Implement -->
+  </div>
+  <button
+    [title]="activeProfile.name"
+    (click)="goToProfilePage()"
+    class="profile-btn"
+    aria-label="Go to profile detail page"
+    type="button"><span>{{ activeProfile.name.split('')[0] }}</span></button>
+</header>
+<header *ngIf="!activeProfile"></header>
 <router-outlet></router-outlet>

@@ -10,6 +10,11 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
+    path: 'profile',
+    loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule),
+    canActivate: [AuthGuardService],
+  },
+  {
     path: 'login',
     loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule),
     // TODO: LFM - Implement router guard to prevento from enter in login route
