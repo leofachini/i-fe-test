@@ -5,11 +5,18 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthService, ProfileService } from './services';
+import {
+  AuthService,
+  CredentialService,
+  ProfileService,
+  StorageService,
+} from './services';
 
 const SERVICES = [
   AuthService,
+  CredentialService,
   ProfileService,
+  StorageService,
 ];
 
 @NgModule({

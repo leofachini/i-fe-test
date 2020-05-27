@@ -3,24 +3,35 @@ import { of, Observable, throwError } from 'rxjs';
 import find from 'lodash-es/find';
 
 import { Credential, Profile } from '../models';
+import { CredentialService } from './credential.service';
 import { ProfileService } from './profile.service';
 
 @Injectable()
 export class AuthService {
 
-  private isAuthenticated = false;
+  private _isAuthenticated = false;
+
+  constructor(
+    private _credentialService: CredentialService,
+    private _profileService: ProfileService,
+  ) { }
 
   login(credential: Credential): Observable<Profile> {
-    if (this.isAuthenticated) {
+    if (this._isAuthenticated) {
       return throwError(new Error('You are already logged in!'));
     }
 
-    const isAllowed = !!find(Credential.credentials, { username: credential.username, password: credential.password });
+    const isAllowed = !!find(this._credentialService.getCredentials(), { username: credential.username, password: credential.password });
 
     if (isAllowed) {
-      return of(ProfileService.findProfile(credential.username));
+      this._isAuthenticated = true;
+      return of(this._profileService.findProfile(credential.username));
     }
     return throwError(new Error('Invalid credentials!'));
+  }
+
+  isLoggedIn(): boolean {
+    return !!this._isAuthenticated;
   }
 
 }
