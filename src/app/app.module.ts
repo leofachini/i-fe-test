@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {
+  AuthGuardService,
   AuthService,
   CredentialService,
   ProfileService,
@@ -13,6 +14,7 @@ import {
 } from './services';
 
 const SERVICES = [
+  AuthGuardService,
   AuthService,
   CredentialService,
   ProfileService,
