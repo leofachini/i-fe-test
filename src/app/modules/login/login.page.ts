@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 
@@ -10,15 +10,13 @@ import { Credential } from  '../../models/credential.model';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
   constructor(
     private _authService: AuthService,
     private _router: Router,
     private _snackBar: MatSnackBar,
   ) { }
-
-  ngOnInit(): void { }
 
   login(credential: Credential): void {
     const subscription = this._authService.login(credential)
