@@ -40,14 +40,18 @@
         justify-content: center;
         z-index: 3;
       }
-      img {
+      .img-bg-one,
+      .img-bg-two {
         position: absolute;
-        &.img-bg-one {
-          z-index: 2;
-        }
-        &.img-bg-two {
-          z-index: 1;
-        }
+      }
+      .img-bg-one {
+        z-index: 2;
+      }
+      .img-bg-two {
+        z-index: 1;
+      }
+      .profile-picture {
+        border-radius: 50%;
       }
     }
   }
