@@ -10,7 +10,6 @@ import {
   AuthService,
   CredentialService,
   ProfileService,
-  StorageService,
 } from './services';
 
 const SERVICES = [
@@ -18,7 +17,6 @@ const SERVICES = [
   AuthService,
   CredentialService,
   ProfileService,
-  StorageService,
 ];
 
 @NgModule({

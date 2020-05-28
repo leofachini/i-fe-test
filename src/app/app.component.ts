@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { StorageService, ProfileService } from "./services";
+import { ProfileService } from "./services";
 import { Profile } from './models';
 
 @Component({
@@ -17,9 +17,6 @@ export class AppComponent implements OnInit, OnDestroy {
   private _profileSubscription: Subscription;
 
   constructor(
-    // This import is needed to execute the StorageService constructor
-    // Or maybe move it to
-    private _storageService: StorageService,
     private _profileSerivce: ProfileService,
     private _router: Router,
   ) { }

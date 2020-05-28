@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { of, Observable, throwError, BehaviorSubject } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { take, map } from 'rxjs/operators';
 import find from 'lodash-es/find';
 
 import { Credential, Profile } from '../models';
@@ -10,7 +10,6 @@ import { ProfileService } from './profile.service';
 @Injectable()
 export class AuthService {
 
-  private _firsTimeFlag: boolean = true;
   private _isLoggedInBehaviorSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(
@@ -18,19 +17,25 @@ export class AuthService {
     private _profileService: ProfileService,
   ) { }
 
-  login(credential: Credential): Observable<Profile> {
-    if (this.isLoggedIn()) {
-      return throwError(new Error('You are already logged in!'));
-    }
+  login(credential: Credential): Observable<Profile | Observable<never>> {
+    return this.isLoggedInObservable()
+      .pipe(
+        take(1),
+        map(isLoggedIn => {
+          if (isLoggedIn) {
+            throw Error('You are already logged in!');
+          }
 
-    const isAllowed = !!find(this._credentialService.getCredentials(), { username: credential.username, password: credential.password });
+          const isAllowed = !!find(this._credentialService.getCredentials(), { username: credential.username, password: credential.password });
 
-    if (isAllowed) {
-      const profile: Profile = this._profileService.findProfile(credential.username);
-      this._profileService.setActiveProfile(profile);
-      return of(this._profileService.getActiveProfile());
-    }
-    return throwError(new Error('Invalid credentials!'));
+          if (isAllowed) {
+            const profile: Profile = this._profileService.findProfile(credential.username);
+            this._profileService.setActiveProfile(profile);
+            return this._profileService.getActiveProfile();
+          }
+          throw new Error('Invalid credentials!');
+        })
+      );
   }
 
   isLoggedIn(): boolean {
@@ -40,9 +45,8 @@ export class AuthService {
   isLoggedInObservable(): Observable<boolean> {
     return this._profileService.getActiveProfileObservable()
       .pipe(
-        filter(profile => this._firsTimeFlag ? !!profile : true),
         map(profile => {
-          this._firsTimeFlag = false;
+          this._isLoggedInBehaviorSubject.next(!!profile);
           return !!profile;
         })
       );
