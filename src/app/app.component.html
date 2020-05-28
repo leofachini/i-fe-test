@@ -7,7 +7,19 @@
     (click)="goToProfilePage()"
     class="profile-btn"
     aria-label="Go to profile detail page"
-    type="button"><span>{{ activeProfile.name.split('')[0] }}</span></button>
+    type="button">
+    <img
+      src="assets/header-profile-bg-1.svg"
+      alt="profile background one"
+      class="img-bg-one"
+      >
+    <img
+      src="assets/header-profile-bg-2.svg"
+      alt="profile background two"
+      class="img-bg-two"
+      >
+    <span>{{ activeProfile.name.split('')[0] }}</span>
+  </button>
 </header>
 <header *ngIf="!activeProfile"></header>
 <router-outlet></router-outlet>
