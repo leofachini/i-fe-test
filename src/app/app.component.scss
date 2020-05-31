@@ -57,6 +57,19 @@
         width: 100%;
       }
     }
+    .header-content {
+      align-items: center;
+      display: flex;
+      font-size: 30px;
+      font-weight: 600;
+      padding-left: 50px;
+      > a {
+        color: var(--secondary-color);
+        &:visited {
+          color: var(--secondary-color);
+        }
+      }
+    }
   }
 }
 
