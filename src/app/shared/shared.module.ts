@@ -2,20 +2,41 @@ import { CommonModule } from '@angular/common';
 import {
   MatButton,
   MatButtonModule,
+  MatCard,
+  MatCardActions,
+  MatCardContent,
+  MatCardHeader,
+  MatCardModule,
+  MatCardSubtitle,
+  MatCardTitle,
+  MatChip,
+  MatChipList,
+  MatChipsModule,
+  MatDialogClose,
+  MatDialogModule,
+  MatError,
   MatFormField,
   MatFormFieldModule,
-  MatError,
   MatInput,
   MatInputModule,
   MatLabel,
   MatSnackBarModule,
 } from '@angular/material';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const COMPONENTS = [
   MatButton,
+  MatCard,
+  MatCardActions,
+  MatCardContent,
+  MatCardHeader,
+  MatCardSubtitle,
+  MatCardTitle,
+  MatChip,
+  MatChipList,
+  MatDialogClose,
   MatError,
   MatFormField,
   MatInput,
@@ -27,14 +48,19 @@ const COMPONENTS = [
   imports: [
     CommonModule,
     FontAwesomeModule,
+    FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatCardModule,
+    MatChipsModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
   ],
   exports: [
     FontAwesomeModule,
+    FormsModule,
     ReactiveFormsModule,
     ...COMPONENTS,
   ],

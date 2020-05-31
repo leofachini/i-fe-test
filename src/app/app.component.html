@@ -1,2 +1,34 @@
-<header></header>
+<header *ngIf="activeProfile">
+  <div class="header-content">
+    <!-- TODO: Implement -->
+  </div>
+  <button
+    [title]="activeProfile.name"
+    (click)="goToProfilePage()"
+    class="profile-btn"
+    aria-label="Go to profile detail page"
+    type="button">
+    <ng-container *ngIf="!activeProfile.picture" >
+      <img
+        src="assets/header-profile-bg-1.svg"
+        alt="profile fallback background one"
+        class="img-bg-one"
+        >
+      <img
+        src="assets/header-profile-bg-2.svg"
+        alt="profile fallback background two"
+        class="img-bg-two"
+        >
+      <span>{{ activeProfile.name.split('')[0] }}</span>
+    </ng-container>
+    <ng-container *ngIf="activeProfile.picture">
+      <img
+        [src]="activeProfile.picture"
+        class="profile-picture"
+        alt="profile picture"
+        >
+    </ng-container>
+  </button>
+</header>
+<header *ngIf="!activeProfile"></header>
 <router-outlet></router-outlet>

@@ -1,0 +1,46 @@
+<section id="profile-page">
+  <mat-card *ngIf="activeProfile">
+    <mat-card-header>
+      <mat-card-title>{{activeProfile.name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="activeProfile.picture" alt="Profile picture">
+    <mat-card-content>
+      <mat-card-title>Profile Info</mat-card-title>
+      <mat-form-field>
+          <mat-label for="name">Name</mat-label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            [(ngModel)]="activeProfile.name"
+            readonly
+            matInput>
+      </mat-form-field>
+      <mat-form-field>
+          <mat-label for="email">E-mail</mat-label>
+          <input
+            id="email"
+            name="email"
+            type="text"
+            [(ngModel)]="activeProfile.email"
+            readonly
+            matInput>
+      </mat-form-field>
+      <mat-card-subtitle>Last 5 watched movies</mat-card-subtitle>
+      <mat-chip-list>
+        <ng-container *ngFor="let movie of activeProfile.movies">
+          <mat-chip>{{ movie.name }}</mat-chip>
+        </ng-container>
+      </mat-chip-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <mat-card-title>Options</mat-card-title>
+      <button
+        (click)="showLogoutConfirmationDialog()"
+        type="button"
+        color="warn"
+        aria-label="Logout from MyFlix"
+        mat-button>Logout</button>
+    </mat-card-actions>
+  </mat-card>
+</section>

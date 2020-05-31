@@ -9,16 +9,16 @@ import {
   AuthGuardService,
   AuthService,
   CredentialService,
+  MovieService,
   ProfileService,
-  StorageService,
 } from './services';
 
 const SERVICES = [
   AuthGuardService,
   AuthService,
   CredentialService,
+  MovieService,
   ProfileService,
-  StorageService,
 ];
 
 @NgModule({

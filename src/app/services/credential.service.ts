@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { get } from 'idb-keyval';
 
 import { Credential } from '../models';
-import { Store } from '../interfaces';
 
 @Injectable()
 export class CredentialService {
 
-  private _profilesBehaviorSubject: BehaviorSubject<Credential[]> = new BehaviorSubject([]);
+  private _defaultCredentials = [
+    new Credential('bob', 'dylan'),
+    new Credential('kate', 'moss'),
+  ];
+  private _profilesBehaviorSubject: BehaviorSubject<Credential[]> = new BehaviorSubject(this._defaultCredentials);
 
-  constructor() {
-    get('store').then((store: Store) => {
-      this.setCredentials(store.credentials);
-    });
-  }
+  constructor() {}
 
   getProfilesObservable(): Observable<Credential[]> {
     return this._profilesBehaviorSubject.asObservable();
@@ -24,7 +22,7 @@ export class CredentialService {
     return this._profilesBehaviorSubject.getValue();
   }
 
-  setCredentials(credentials: Credential[]): void {
+  setCredentials(credentials: Credential[] = this._defaultCredentials): void {
     this._profilesBehaviorSubject.next(credentials);
   }
 
