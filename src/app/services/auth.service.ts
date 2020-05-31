@@ -51,4 +51,8 @@ export class AuthService {
         })
       );
   }
+
+  logout(): void {
+    this._profileService.setActiveProfile(undefined);
+  }
 }
