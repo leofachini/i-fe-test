@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   MatButton,
   MatButtonModule,
@@ -24,7 +25,9 @@ import {
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RouterModule } from '@angular/router';
+
+import { MfBreadCrumbComponent } from './components';
 
 const COMPONENTS = [
   MatButton,
@@ -41,10 +44,13 @@ const COMPONENTS = [
   MatFormField,
   MatInput,
   MatLabel,
+  MfBreadCrumbComponent,
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    MfBreadCrumbComponent,
+  ],
   imports: [
     CommonModule,
     FontAwesomeModule,
@@ -57,6 +63,7 @@ const COMPONENTS = [
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
+    RouterModule,
   ],
   exports: [
     FontAwesomeModule,
