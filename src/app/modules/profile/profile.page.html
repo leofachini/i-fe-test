@@ -26,7 +26,12 @@
             readonly
             matInput>
       </mat-form-field>
-      <!-- TODO: Add last 5 movies watched -->
+      <mat-card-subtitle>Last 5 watched movies</mat-card-subtitle>
+      <mat-chip-list>
+        <ng-container *ngFor="let movie of activeProfile.movies">
+          <mat-chip>{{ movie.name }}</mat-chip>
+        </ng-container>
+      </mat-chip-list>
     </mat-card-content>
     <mat-card-actions>
       <mat-card-title>Options</mat-card-title>
