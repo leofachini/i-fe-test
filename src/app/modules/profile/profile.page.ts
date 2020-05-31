@@ -7,6 +7,7 @@ import { AuthService, ProfileService } from 'src/app/services';
 import { LogoutDialogComponent } from './components/logout-dialog.component';
 import { Profile } from 'src/app/models';
 import { Router } from '@angular/router';
+import { Breadcrumb } from 'src/app/interfaces/breadcrumb.interface';
 
 @Component({
   selector: 'profile-page',
@@ -16,6 +17,16 @@ import { Router } from '@angular/router';
 export class ProfilePage implements OnInit, OnDestroy {
 
   activeProfile: Profile;
+  breadcrumbs: Breadcrumb[] = [
+    {
+      label: 'Home',
+      path: '',
+    },
+    {
+      label: 'Profile',
+      path: 'profile',
+    },
+  ];
 
   private _profileSubscription: Subscription;
 
