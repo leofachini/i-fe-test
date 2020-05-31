@@ -52,6 +52,9 @@
       }
       .profile-picture {
         border-radius: 50%;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
       }
     }
   }
