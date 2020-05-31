@@ -1,0 +1,36 @@
+$padding: 16px;
+:host {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  #profile-page {
+    padding: 20px;
+    position: relative;
+    width: 1024px;
+    .mat-card {
+      padding: 0;
+      .mat-card-header {
+        padding: $padding $padding 0 $padding;
+      }
+      .mat-card-image {
+        margin: 0;
+      }
+      .mat-card-content {
+        display: flex;
+        flex-direction: column;
+        padding: $padding;
+
+      }
+      .mat-card-actions {
+        padding: $padding;
+        margin:0;
+        .mat-button {
+          margin: 0;
+        }
+      }
+      .mat-card-title {
+        margin-bottom: 0 $padding $padding $padding;
+      }
+    }
+  }
+}
