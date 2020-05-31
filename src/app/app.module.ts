@@ -9,6 +9,7 @@ import {
   AuthGuardService,
   AuthService,
   CredentialService,
+  MovieService,
   ProfileService,
 } from './services';
 
@@ -16,6 +17,7 @@ const SERVICES = [
   AuthGuardService,
   AuthService,
   CredentialService,
+  MovieService,
   ProfileService,
 ];
 
