@@ -2,6 +2,8 @@ import { Movie } from './movie.model';
 
 export class Profile {
 
+  public amountOfWatchedMovies: number = 5;
+
   constructor(
     public id: string | number,
     public username: string,
@@ -25,6 +27,8 @@ export class Profile {
     } else {
       this.movies = [movie, ...this.movies.splice(0, 4)];
     }
+
+    this.amountOfWatchedMovies += 1;
   }
 
 }
