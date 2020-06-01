@@ -24,7 +24,7 @@ export class ProfileService {
         ];
         idbSet('profiles', profiles);
       }
-      this._profilesBehaviorSubject = new BehaviorSubject(profiles);
+      this._profilesBehaviorSubject = new BehaviorSubject(profiles.map(this._profileFactory));
     })
     idbGet('activeProfile').then(this.setActiveProfile.bind(this));
   }
@@ -42,7 +42,7 @@ export class ProfileService {
   }
 
   getActiveProfile(): Profile {
-    return cloneDeep(this._activeProfileBehaviorSubject.getValue());
+    return this._profileFactory(this._activeProfileBehaviorSubject.getValue());
   }
 
   getActiveProfileObservable(): Observable<Profile> {
@@ -53,11 +53,25 @@ export class ProfileService {
     this._activeProfileBehaviorSubject.next(profile);
     idbSet('activeProfile', profile);
     if (profile) {
+      profile = this._profileFactory(profile);
       const profiles = this.getProfiles();
       const profileIndex = profiles.findIndex(p => p.id === profile.id);
       profiles[profileIndex] = profile;
+      this._profilesBehaviorSubject.next(profiles);
       idbSet('profiles', profiles);
     }
+  }
+
+  private _profileFactory(profile: Profile) {
+    return new Profile(
+      profile.id,
+      profile.username,
+      profile.name,
+      profile.email,
+      profile.picture,
+      profile.movies,
+      profile.amountOfWatchedMovies
+    );
   }
 
 }

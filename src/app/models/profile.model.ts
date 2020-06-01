@@ -2,8 +2,6 @@ import { Movie } from './movie.model';
 
 export class Profile {
 
-  public amountOfWatchedMovies: number = 5;
-
   constructor(
     public id: string | number,
     public username: string,
@@ -11,11 +9,8 @@ export class Profile {
     public email: string,
     public picture: string,
     public movies: Movie[],
-  ) {
-    if (this.picture) {
-      this.picture = `assets/${this.picture}`;
-    }
-  }
+    public amountOfWatchedMovies: number = 5,
+  ) { }
 
   public watchMovie(movie: Movie) {
     const movieIndex = this.movies.findIndex(m => m.id === movie.id);

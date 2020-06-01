@@ -28,7 +28,6 @@
     </mat-card>
   </ng-container>
 </section>
-<!-- <h1 class="section-title">Top 5 watched movies in Brazil</h1> -->
 <section id="top-watched-movies">
   <mat-card>
     <mat-card-header>
@@ -38,6 +37,20 @@
       <mat-list>
         <ng-container *ngFor="let topMovie of topMoviesWatchedInBrazil; let i = index">
           <mat-list-item role="listitem">{{ (i+1) }} - {{ topMovie.name }} - {{ topMovie.views }} views</mat-list-item>
+        </ng-container>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</section>
+<section id="top-watched-movies">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Top users with the most movies visualizations</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <ng-container *ngFor="let p of profiles; let i = index">
+          <mat-list-item role="listitem">{{ (i+1) }} - {{ p.name }} - {{ p.amountOfWatchedMovies }} views</mat-list-item>
         </ng-container>
       </mat-list>
     </mat-card-content>

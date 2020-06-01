@@ -23,7 +23,7 @@
     </ng-container>
     <ng-container *ngIf="activeProfile.picture">
       <img
-        [src]="activeProfile.picture"
+        [src]="'/assets/' + activeProfile.picture"
         class="profile-picture"
         alt="profile picture"
         >

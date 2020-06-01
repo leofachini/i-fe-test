@@ -4,7 +4,7 @@
     <mat-card-header>
       <mat-card-title>{{activeProfile.name}}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image [src]="activeProfile.picture" alt="Profile picture">
+    <img mat-card-image [src]="'/assets/' + activeProfile.picture" alt="Profile picture">
     <mat-card-content>
       <mat-card-title>Profile Info</mat-card-title>
       <mat-form-field>

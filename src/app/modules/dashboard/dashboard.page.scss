@@ -1,4 +1,5 @@
 :host {
+  $padding: 16px;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -9,7 +10,7 @@
   .section-title {
     font-size: 30px;
     font-weight: 600;
-    padding: 16px;
+    padding: $padding;
     width: 1024px;
   }
   section#movies-available {
@@ -17,7 +18,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
     max-width: 1024px;
-    padding: 16px;
+    padding: $padding;
     width: 100%;
     .movie-card {
       height: 400px;
@@ -46,6 +47,7 @@
     }
   }
   section#top-watched-movies {
+    padding: $padding;
     width: 1024px;
     mat-list {
       width: 100%;
