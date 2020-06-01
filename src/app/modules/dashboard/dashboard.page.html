@@ -1,6 +1,6 @@
 <h1 class="section-title">Movies Available</h1>
 <section id="movies-available">
-  <ng-container *ngFor="let movie of movies">
+  <ng-container *ngFor="let movie of movies | async">
     <mat-card class="movie-card">
       <mat-card-header>
         <mat-card-title>{{movie.name}}</mat-card-title>

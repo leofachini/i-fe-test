@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { map,take } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material';
 import { orderBy } from 'lodash-es';
 import * as faker from 'faker';
@@ -18,7 +18,7 @@ export class DashboardPage implements OnInit, OnDestroy {
   private _profileSubscription: Subscription;
 
   genreMetrics: Observable<Array<{key, value}>>;
-  movies: Movie[] = [];
+  movies: Observable<Movie[]>;
   profiles: Profile[] = [];
   topMoviesWatchedInBrazil: Movie[] = [];
 
@@ -30,9 +30,7 @@ export class DashboardPage implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this._movieService.getMovies().pipe(take(1)).subscribe(movies => {
-      this.movies = movies;
-    });
+    this.movies = this._movieService.getMovies();
 
     let randomWatchedMovies = this._movieService.getRandomMovies(5)
       .map(movie => {
