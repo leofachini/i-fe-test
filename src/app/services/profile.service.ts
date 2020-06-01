@@ -20,6 +20,7 @@ export class ProfileService {
         profiles =  [
           new Profile(1, 'bob', 'Bob', 'bb@bob.us', 'bob-dylan-profile.jpg', this._movieService.getRandomMovies(5)),
           new Profile(2, 'kate', 'Kate', 'kt@kate.la', 'kate-moss-profile.jpeg', this._movieService.getRandomMovies(5)),
+          new Profile(3, 'quentin', 'Quentin', 'qt@pulp.fc', 'tarantino-profile.jpg', this._movieService.getRandomMovies(5)),
         ];
         idbSet('profiles', profiles);
       }

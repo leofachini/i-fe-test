@@ -9,6 +9,7 @@ export class CredentialService {
   private _defaultCredentials = [
     new Credential('bob', 'dylan'),
     new Credential('kate', 'moss'),
+    new Credential('quentin', 'tarantino'),
   ];
   private _profilesBehaviorSubject: BehaviorSubject<Credential[]> = new BehaviorSubject(this._defaultCredentials);
 
