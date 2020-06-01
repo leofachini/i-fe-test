@@ -49,7 +49,7 @@
     </mat-card-header>
     <mat-card-content>
       <mat-list>
-        <ng-container *ngFor="let p of profiles; let i = index">
+        <ng-container *ngFor="let p of profiles | async; let i = index">
           <mat-list-item role="listitem">{{ (i+1) }} - {{ p.name }} - {{ p.amountOfWatchedMovies }} views</mat-list-item>
         </ng-container>
       </mat-list>

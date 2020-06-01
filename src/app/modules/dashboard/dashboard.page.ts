@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material';
 import { orderBy } from 'lodash-es';
@@ -6,20 +6,18 @@ import * as faker from 'faker';
 
 import { MovieService, ProfileService, GenreService } from 'src/app/services';
 import { Movie, Profile } from 'src/app/models';
-import { Subscription, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'dashboard-page',
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.scss']
 })
-export class DashboardPage implements OnInit, OnDestroy {
-
-  private _profileSubscription: Subscription;
+export class DashboardPage implements OnInit {
 
   genreMetrics: Observable<Array<{key, value}>>;
   movies: Observable<Movie[]>;
-  profiles: Profile[] = [];
+  profiles: Observable<Profile[]>;
   topMoviesWatchedInBrazil: Movie[] = [];
 
   constructor(
@@ -39,14 +37,8 @@ export class DashboardPage implements OnInit, OnDestroy {
       });
 
     this.topMoviesWatchedInBrazil = orderBy(randomWatchedMovies, ['views'], ['desc']);
-    this._subscribeToProfilesChanges();
+    this._setProfileChanges();
     this._setGenreMetricsObservable();
-  }
-
-  ngOnDestroy(): void {
-    if (this._profileSubscription) {
-      this._profileSubscription.unsubscribe();
-    }
   }
 
   private _setGenreMetricsObservable(): void {
@@ -60,11 +52,11 @@ export class DashboardPage implements OnInit, OnDestroy {
       }));
   }
 
-  private _subscribeToProfilesChanges (): void {
-    this._profileSubscription = this._profileService.getProfilesObservable()
-      .subscribe(profiles => {
-        this.profiles = orderBy((profiles || []), ['amountOfWatchedMovies'], ['desc']);
-      });
+  private _setProfileChanges (): void {
+    this.profiles = this._profileService.getProfilesObservable()
+      .pipe(
+        map(profiles => orderBy((profiles || []), ['amountOfWatchedMovies'], ['desc']))
+      );
   }
 
   watchMovie(movie: Movie): void {
