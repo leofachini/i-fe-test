@@ -56,5 +56,18 @@
     </mat-card-content>
   </mat-card>
 </section>
-<!-- TODO: Add Top 3 users who must watched the movies -->
-<!-- TODO: Add genres with most watched -->
+
+<section id="most-watched-genres">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Most watched genres</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <ng-container *ngFor="let genre of genreMetrics | async; let i = index">
+          <mat-list-item role="listitem">{{ (i+1) }} - {{ genre.key }} - {{ genre.value }} views</mat-list-item>
+        </ng-container>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</section>

@@ -46,7 +46,8 @@
       }
     }
   }
-  section#top-watched-movies {
+  section#top-watched-movies,
+  section#most-watched-genres {
     padding: $padding;
     width: 1024px;
     mat-list {

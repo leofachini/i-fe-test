@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { take, map } from 'rxjs/operators';
+import { take, map, mergeMap } from 'rxjs/operators';
 import find from 'lodash-es/find';
 
 import { Credential, Profile } from '../models';
@@ -21,7 +21,7 @@ export class AuthService {
     return this.isLoggedInObservable()
       .pipe(
         take(1),
-        map(isLoggedIn => {
+        mergeMap(isLoggedIn => {
           if (isLoggedIn) {
             throw Error('You are already logged in!');
           }
@@ -29,11 +29,13 @@ export class AuthService {
           const isAllowed = !!find(this._credentialService.getCredentials(), { username: credential.username, password: credential.password });
 
           if (isAllowed) {
-            const profile: Profile = this._profileService.findProfile(credential.username);
-            this._profileService.setActiveProfile(profile);
-            return this._profileService.getActiveProfile();
+            return this._profileService.findProfile(credential.username);
           }
           throw new Error('Invalid credentials!');
+        }),
+        map(profile => {
+          this._profileService.setActiveProfile(profile);
+          return this._profileService.getActiveProfile();
         })
       );
   }
