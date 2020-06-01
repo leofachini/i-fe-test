@@ -1,0 +1,60 @@
+:host {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .section-title {
+    font-size: 30px;
+    font-weight: 600;
+    padding: 16px;
+    width: 1024px;
+  }
+  section#movies-available {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    max-width: 1024px;
+    padding: 16px;
+    width: 100%;
+    .movie-card {
+      height: 400px;
+      max-height: 400px;
+      max-width: 300px;
+      .img-container {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        img {
+          height: 230px;
+          max-height: 230px;
+        }
+      }
+      .mat-card-content {
+        height: 20px;
+        margin-top: 20px;
+        max-height: 70px;
+        p {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+  section#top-watched-movies {
+    width: 1024px;
+    mat-list {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 499px) {
+  :host {
+    section#dashboard {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+  }
+}

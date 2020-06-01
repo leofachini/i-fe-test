@@ -21,6 +21,9 @@ import {
   MatInput,
   MatInputModule,
   MatLabel,
+  MatList,
+  MatListItem,
+  MatListModule,
   MatSnackBarModule,
 } from '@angular/material';
 import { NgModule } from '@angular/core';
@@ -44,6 +47,8 @@ const COMPONENTS = [
   MatFormField,
   MatInput,
   MatLabel,
+  MatList,
+  MatListItem,
   MfBreadCrumbComponent,
 ];
 
@@ -62,6 +67,7 @@ const COMPONENTS = [
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatListModule,
     MatSnackBarModule,
     RouterModule,
   ],
