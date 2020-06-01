@@ -51,6 +51,12 @@ export class ProfileService {
   setActiveProfile(profile: Profile): void {
     this._activeProfileBehaviorSubject.next(profile);
     idbSet('activeProfile', profile);
+    if (profile) {
+      const profiles = this.getProfiles();
+      const profileIndex = profiles.findIndex(p => p.id === profile.id);
+      profiles[profileIndex] = profile;
+      idbSet('profiles', profiles);
+    }
   }
 
 }

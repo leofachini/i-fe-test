@@ -15,4 +15,16 @@ export class Profile {
     }
   }
 
+  public watchMovie(movie: Movie) {
+    const movieIndex = this.movies.findIndex(m => m.id === movie.id);
+
+    if (movieIndex >= 0) {
+      const firstMovie = this.movies[movieIndex];
+      this.movies.splice(movieIndex,1);
+      this.movies = [firstMovie, ...this.movies];
+    } else {
+      this.movies = [movie, ...this.movies.splice(0, 4)];
+    }
+  }
+
 }

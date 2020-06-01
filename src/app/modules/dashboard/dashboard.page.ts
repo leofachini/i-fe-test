@@ -3,7 +3,7 @@ import { take } from 'rxjs/operators';
 import orderBy from 'lodash-es/orderBy';
 import * as faker from 'faker';
 
-import { MovieService } from 'src/app/services';
+import { MovieService, ProfileService } from 'src/app/services';
 import { Movie } from 'src/app/models';
 
 @Component({
@@ -18,6 +18,7 @@ export class DashboardPage implements OnInit {
 
   constructor(
     private _movieService: MovieService,
+    private _profileService: ProfileService,
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +33,12 @@ export class DashboardPage implements OnInit {
       });
 
     this.topMoviesWatchedInBrazil = orderBy(randomWatchedMovies, ['views'], ['desc']);
+  }
+
+  watchMovie(movie: Movie): void {
+    const activeProfile = this._profileService.getActiveProfile();
+    activeProfile.watchMovie(movie);
+    this._profileService.setActiveProfile(activeProfile);
   }
 
 }

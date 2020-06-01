@@ -18,19 +18,30 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <!-- TODO: Compute watch to the user -->
-        <button color="primary" mat-button>WATCH</button>
+        <button
+          (click)="watchMovie(movie)"
+          aria-label="watch movie"
+          color="primary"
+          type="button"
+          mat-button>WATCH</button>
       </mat-card-actions>
     </mat-card>
   </ng-container>
 </section>
-<h1 class="section-title">Top 5 watched movies in Brazil</h1>
+<!-- <h1 class="section-title">Top 5 watched movies in Brazil</h1> -->
 <section id="top-watched-movies">
-  <mat-list>
-    <ng-container *ngFor="let topMovie of topMoviesWatchedInBrazil; let i = index">
-      <mat-list-item role="listitem">{{ (i+1) }} - {{ topMovie.name }} - {{ topMovie.views }} views</mat-list-item>
-    </ng-container>
-  </mat-list>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Top 5 watched movies in Brazil</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <ng-container *ngFor="let topMovie of topMoviesWatchedInBrazil; let i = index">
+          <mat-list-item role="listitem">{{ (i+1) }} - {{ topMovie.name }} - {{ topMovie.views }} views</mat-list-item>
+        </ng-container>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
 </section>
 <!-- TODO: Add Top 3 users who must watched the movies -->
 <!-- TODO: Add genres with most watched -->
