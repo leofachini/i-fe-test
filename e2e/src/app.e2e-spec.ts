@@ -8,9 +8,14 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should have a empty tag header', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('ilegra app is running!');
+    expect(page.getHeaderText()).toEqual('');
+  });
+
+  it('should redirect to login after startup', () => {
+    page.navigateTo();
+    expect(browser.getCurrentUrl()).toContain('login');
   });
 
   afterEach(async () => {
