@@ -1,0 +1,11 @@
+version: '3.0'
+
+services:
+  docker-angular-cli:
+    image: leofachini:docker-angular-cli
+    build:
+      context: .
+      args:
+        NODE_ENV: production
+    ports:
+      - "80:80"
