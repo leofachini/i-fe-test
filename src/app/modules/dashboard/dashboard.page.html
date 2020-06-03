@@ -1,0 +1,73 @@
+<h1 class="section-title">Movies Available</h1>
+<section id="movies-available">
+  <ng-container *ngFor="let movie of movies | async">
+    <mat-card class="movie-card">
+      <mat-card-header>
+        <mat-card-title>{{movie.name}}</mat-card-title>
+      </mat-card-header>
+      <div class="img-container">
+        <img
+          [src]="movie.banner"
+          alt="Movie banner photo"
+          mat-card-image
+          >
+      </div>
+      <mat-card-content>
+        <p [title]="movie.description">
+          {{movie.description}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          (click)="watchMovie(movie)"
+          aria-label="watch movie"
+          color="primary"
+          type="button"
+          mat-button>WATCH</button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+</section>
+<section id="top-watched-movies">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Top 5 watched movies in Brazil</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <ng-container *ngFor="let topMovie of topMoviesWatchedInBrazil; let i = index">
+          <mat-list-item role="listitem">{{ (i+1) }} - {{ topMovie.name }} - {{ topMovie.views }} views</mat-list-item>
+        </ng-container>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</section>
+<section id="top-watched-movies">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Top users with the most movies visualizations</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <ng-container *ngFor="let p of profiles | async; let i = index">
+          <mat-list-item role="listitem">{{ (i+1) }} - {{ p.name }} - {{ p.amountOfWatchedMovies }} views</mat-list-item>
+        </ng-container>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<section id="most-watched-genres">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Most watched genres</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <ng-container *ngFor="let genre of genreMetrics | async; let i = index">
+          <mat-list-item role="listitem">{{ (i+1) }} - {{ genre.key }} - {{ genre.value }} views</mat-list-item>
+        </ng-container>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</section>

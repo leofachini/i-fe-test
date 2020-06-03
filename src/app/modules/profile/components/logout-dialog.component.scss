@@ -1,0 +1,20 @@
+:host {
+  font-size: 16px;
+  h1 {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  div[mat-dialog-content] {
+    margin-bottom: 16px;
+  }
+  div[mat-dialog-actions] {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  #logout-button {
+    color: var()
+  }
+}

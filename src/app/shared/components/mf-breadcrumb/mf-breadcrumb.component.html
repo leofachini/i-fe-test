@@ -1,0 +1,10 @@
+<div class="breadcrumb-container">
+  <ng-container *ngFor="let b of breadcrumbs; let i = index">
+    <ng-container *ngIf="i < breadcrumbs.length - 1; else elseTemplate">
+      <a [routerLink]="b.path">{{ b.label }}</a><span> > </span>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <span>{{ b.label }}</span>
+    </ng-template>
+  </ng-container>
+</div>

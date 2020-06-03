@@ -1,0 +1,59 @@
+// From
+// https://material.angular.io/guide/theming#multiple-themes
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// **Be sure that you only ever include this mixin once!**
+@include mat-core();
+
+// Colors available https://material.io/design/color/
+$light-app-primary: mat-palette($mat-blue);
+$light-app-accent:  mat-palette($mat-amber, A200, A100, A400);
+$light-app-theme:   mat-light-theme($light-app-primary, $light-app-accent);
+
+// Include the default theme styles.
+@include angular-material-theme($light-app-theme);
+
+
+// Define an alternate dark theme.
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
+$dark-warn:    mat-palette($mat-deep-orange);
+$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+// Include the alternative theme styles inside of a block with a CSS class. You can make this
+// CSS class whatever you want. In this example, any component inside of an element with
+// `.dark-theme` will be affected by this alternate dark theme instead of the default theme.
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+}
+
+:root {
+  --primary-color: #{mat-color($light-app-primary)};
+  --secondary-color: #{mat-color($light-app-accent)};
+  --warn-color: #{mat-color($dark-warn)};
+}
+
+button.suffix-button {
+  bottom: 7px;
+  color: rgba(0, 0, 0, 0.54);
+  cursor: pointer;
+  height: 18px;
+  margin: 0;
+  outline: none;
+  position: absolute;
+  right: 5px;
+  width: 15px;
+  &:hover {
+    outline: none;
+  }
+}
+
+.myflix-snack-bar {
+  &.warning {
+    background-color: var(--warn-color);
+    color: white;
+  }
+}

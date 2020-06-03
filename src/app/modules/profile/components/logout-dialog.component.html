@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Confirmation</h1>
+<div mat-dialog-content>
+  <p>Are you sure that you want to logout from MyFlix?</p>
+</div>
+<div mat-dialog-actions>
+  <button
+    (click)="dismiss()"
+    aria-label="No, I don't want to logout"
+    mat-button
+    >No, thanks</button>
+  <button
+    [mat-dialog-close]="true"
+    aria-label="Yes, I want to logout"
+    color="warn"
+    mat-button
+    cdkFocusInitial>Yes</button>
+</div>
