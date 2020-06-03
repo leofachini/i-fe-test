@@ -31,29 +31,60 @@
                    <div class="content-data">
 
 <h1 id="ilegra-front-end-enginner-test-case">Ilegra Front-End Enginner Test Case</h1>
-<h2 id="general-info">General info</h2>
+<h2 id="general-info"><strong>General info</strong></h2>
 <p>You can log into this application with one of the following credentials (user / password):</p>
 <ol>
 <li><strong>bob</strong> / <strong>dylan</strong></li>
 <li><strong>kate</strong> / <strong>moss</strong></li>
 <li><strong>quentin</strong> / <strong>tarantino</strong></li>
 </ol>
-<h2 id="docker-compose">Docker compose</h2>
+<h3 id="docker-compose">Docker compose</h3>
 <p>Run <code>docker-compose up</code> in the application root directory, then access the application into <code>http://localhost</code>.</p>
-<h2 id="development-server">Development server</h2>
+<h3 id="development-server">Development server</h3>
 <p>Run <code>ng serve</code> for a dev server. Navigate to <code>http://localhost:4200/</code>. The app will automatically reload if you change any of the source files.</p>
-<h2 id="build">Build</h2>
+<h3 id="build">Build</h3>
 <p>Run <code>ng build</code> to build the project. The build artifacts will be stored in the <code>dist/</code> directory. Use the <code>--prod</code> flag for a production build or set <code>NODE_ENV=production</code> environment variable.</p>
-<h2 id="running-unit-tests">Running unit tests</h2>
+<h3 id="running-unit-tests">Running unit tests</h3>
 <p>Run <code>ng test</code> to execute the unit tests via <a href="https://karma-runner.github.io">Karma</a>.
 Also, worth notice that it will generate a code coverage report into <code>./coverage/</code> folder.</p>
-<h2 id="running-end-to-end-tests">Running end-to-end tests</h2>
+<h3 id="running-end-to-end-tests">Running end-to-end tests</h3>
 <p>Run <code>ng e2e</code> to execute the end-to-end tests via <a href="http://www.protractortest.org/">Protractor</a>.</p>
-<h2 id="running-lint">Running lint</h2>
+<h3 id="running-lint">Running lint</h3>
 <p>Run <code>ng lint</code> to execute the linter in the project.</p>
-<h2 id="further-help">Further help</h2>
+<h3 id="generate-documentation">Generate documentation</h3>
+<p>Run <code>npm run doc:gen</code> to generate project documentation.</p>
+<h3 id="generate-documentation-1">Generate documentation</h3>
+<p>Run <code>npm run doc:serve</code> to serve the generated project documentation.</p>
+<h3 id="further-help">Further help</h3>
 <p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 8.3.20.</p>
 <p>To get more help on the Angular CLI use <code>ng help</code> or go check out the <a href="https://github.com/angular/angular-cli/blob/master/README.md">Angular CLI README</a>.</p>
+<h2 id="pain-points"><strong>Pain points</strong></h2>
+<ol>
+<li><p>Found problems with style of inner elements inside <code>ng-content</code>, reggarding ng-deep</p>
+</li>
+<li><p>Decide about where to declare components in a SharedModule or to repeat some of them in each modules</p>
+</li>
+<li><p>Documentation</p>
+<p>Undetailed documentation definition of what need to be done, such as: Definition of what is &quot;Top priority&quot; regarding movies order.</p>
+<p>Found mismatching or outdated directions in documentation, in keep in mind section: &quot;So we will login with 1 user post some stuff, login with user 2 post more stuff and we will login with user 1 again and we hope see user 2 posts on user 1 timeline. I&#39;m sure you all know have a social network works or should work&quot;. We aren&#39;t suposed to create any post nothing on each oder timeline in this MyFlix chalenge.</p>
+</li>
+</ol>
+<h2 id="good-things"><strong>Good things</strong></h2>
+<ol>
+<li>Unit-test helped me to avoid errors in an refactoring that I&#39;ve done</li>
+<li>End-To-End tests also helped me to avoid the break of the login functionality</li>
+<li>Typescript type really improve our capability of having miss type matchings (if used properly)</li>
+<li>Angular Material Components helped me to keep consistency in the UI</li>
+</ol>
+<h2 id="further-enhancements"><strong>Further enhancements</strong></h2>
+<ol>
+<li>Add support to multiple languages (i18n)</li>
+<li>Add ghost elements for components that are doing back-end requests and blocking the UI from rendering</li>
+<li>Add destructuring to Model constructors</li>
+<li>Add header in named route to avoid handle ng-if there.</li>
+<li>Move header to a component instead of keep it in the app component.</li>
+<li>Set app routes in a constant variable</li>
+</ol>
 
 
 
