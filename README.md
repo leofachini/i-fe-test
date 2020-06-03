@@ -2,6 +2,16 @@
 
 ## **General info**
 
+Techinical requirements:
+
+- Docker `19.03.8`
+- Docker-Compose `1.25.5`
+- Git `2.16.3`
+- Node.js `12.13.0`
+- Npm `6.14.5`
+
+Once you have all these thing set you can run a `npm ci` in app root folder to install all project's dependencies. Then go to the `Development server` or `Docker compose` section to run the application.
+
 You can log into this application with one of the following credentials (user / password):
 
 1. **bob** / **dylan**
@@ -15,6 +25,7 @@ Run `docker-compose up` in the application root directory, then access the appli
 ### Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+PS: Remember that you must install your dependencies with `npm ci` before trying to serve the application.
 
 ### Build
 
