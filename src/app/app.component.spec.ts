@@ -1,6 +1,7 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { DebugElement } from '@angular/core';
+import { MovieService, ProfileService, GenreService } from 'src/app/services';
 
 import { AppComponent } from './app.component';
 
@@ -18,6 +19,11 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
       ],
+      providers: [
+        GenreService,
+        MovieService,
+        ProfileService,
+      ]
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(AppComponent);
       de = fixture.debugElement;

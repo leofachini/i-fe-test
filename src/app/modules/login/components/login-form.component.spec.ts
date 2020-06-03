@@ -2,6 +2,7 @@ import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LoginFormComponent } from './login-form.component';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -16,6 +17,7 @@ describe('LoginFormComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
+        BrowserAnimationsModule,
         SharedModule,
       ],
       declarations: [
