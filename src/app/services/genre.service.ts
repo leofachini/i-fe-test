@@ -15,7 +15,7 @@ export class GenreService {
 
   constructor() {
     idbGet(this.key).then((metrics: Map<string, number>) => {
-      this._genreMetricsBehaviorSubject.next(metrics ? metrics: new Map());
+      this._genreMetricsBehaviorSubject.next(metrics ? metrics : new Map());
     });
   }
 

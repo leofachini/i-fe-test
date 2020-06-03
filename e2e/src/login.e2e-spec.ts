@@ -21,7 +21,7 @@ describe('App login view', () => {
 
     const EC = protractor.ExpectedConditions;
 
-    browser.wait(EC.urlContains('/'), 5000).then(function(result) {
+    browser.wait(EC.urlContains('/'), 5000).then(result => {
       expect(result).toEqual(true);
     });
 

@@ -9,7 +9,7 @@ import { Movie, Profile } from 'src/app/models';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'dashboard-page',
+  selector: 'mf-dashboard-page',
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.scss']
 })
@@ -30,10 +30,10 @@ export class DashboardPage implements OnInit {
   ngOnInit(): void {
     this.movies = this._movieService.getMovies();
 
-    let randomWatchedMovies = this._movieService.getRandomMovies(5)
+    const randomWatchedMovies = this._movieService.getRandomMovies(5)
       .map(movie => {
         movie.views = faker.random.number({min: 10000, max: 1000000});
-        return movie
+        return movie;
       });
 
     this.topMoviesWatchedInBrazil = orderBy(randomWatchedMovies, ['views'], ['desc']);
@@ -44,15 +44,15 @@ export class DashboardPage implements OnInit {
   private _setGenreMetricsObservable(): void {
     this.genreMetrics = this._genreService.getGenreMetricsObservable()
       .pipe(map(metrics => {
-        let metricArray: Array<{key, value}> = Array.from(metrics.entries()).map((entries: Array<any>) => {
+        const metricArray: Array<{key, value}> = Array.from(metrics.entries()).map((entries: Array<any>) => {
           const [key, value] = entries;
           return {key, value};
-        })
+        });
         return orderBy(metricArray, ['value'], ['desc']);
       }));
   }
 
-  private _setProfileChanges (): void {
+  private _setProfileChanges(): void {
     this.profiles = this._profileService.getProfilesObservable()
       .pipe(
         map(profiles => orderBy((profiles || []), ['amountOfWatchedMovies'], ['desc']))

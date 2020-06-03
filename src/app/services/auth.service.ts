@@ -25,8 +25,8 @@ export class AuthService {
           if (isLoggedIn) {
             throw Error('You are already logged in!');
           }
-
-          const isAllowed = !!find(this._credentialService.getCredentials(), { username: credential.username, password: credential.password });
+          const credentials = this._credentialService.getCredentials();
+          const isAllowed = !!find(credentials, { username: credential.username, password: credential.password });
 
           if (isAllowed) {
             return this._profileService.findProfile(credential.username);

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { Breadcrumb } from 'src/app/interfaces/breadcrumb.interface';
 
 @Component({
-  selector: 'profile-page',
+  selector: 'mf-profile-page',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss']
 })

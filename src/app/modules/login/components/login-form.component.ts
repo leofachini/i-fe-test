@@ -6,19 +6,19 @@ import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import { Credential } from '../../../models/credential.model';
 
 @Component({
-  selector: 'login-form',
+  selector: 'mf-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit {
 
   @Output()
-  onSubmit = new EventEmitter<Credential>();
+  login = new EventEmitter<Credential>();
 
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   faTimes = faTimes;
-  hidePassword: boolean = true;
+  hidePassword = true;
   loginForm: FormGroup;
 
   constructor(private fb: FormBuilder) { }
@@ -33,7 +33,7 @@ export class LoginFormComponent implements OnInit {
   submitForm(): void {
     if (this.loginForm.valid) {
       const credential = new Credential(this.loginForm.controls.username.value, this.loginForm.controls.password.value);
-      this.onSubmit.emit(credential);
+      this.login.emit(credential);
     }
   }
 

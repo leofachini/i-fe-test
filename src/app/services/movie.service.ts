@@ -22,7 +22,7 @@ export class MovieService {
       this._getTheGodfather(),
       this._getTheGooniesData(),
       this._getTheNeverendingStoryIIIData(),
-    ]
+    ];
   }
 
   getMovies(): Observable<Movie[]> {
@@ -45,7 +45,7 @@ export class MovieService {
       1,
       'The Hateful Eight',
       'the-hateful-eight.jpg',
-      [Genre.crime, Genre.drama, Genre.mistery,Genre.western],
+      [Genre.crime, Genre.drama, Genre.mistery, Genre.western],
       2015,
       'In the dead of a Wyoming winter, a bounty hunter and his prisoner ' +
       'find shelter in a cabin currently inhabited by a collection of ' +

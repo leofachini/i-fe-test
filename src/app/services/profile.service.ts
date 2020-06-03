@@ -24,7 +24,7 @@ export class ProfileService {
       } else {
         this._createProfiles();
       }
-    })
+    });
     idbGet('activeProfile').then(this.setActiveProfile.bind(this));
   }
 
