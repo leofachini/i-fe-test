@@ -20,7 +20,7 @@ export class ProfileService {
   ) {
     idbGet('profiles').then((profiles: Profile[]) => {
       if (profiles) {
-        this._profilesBehaviorSubject = new BehaviorSubject(profiles.map(this._profileFactory));
+        this._profilesBehaviorSubject.next(profiles.map(this._profileFactory));
       } else {
         this._createProfiles();
       }
@@ -41,6 +41,7 @@ export class ProfileService {
     }, []);
 
     this._genreService.generateMetricFromMovies(movies);
+    this._profilesBehaviorSubject.next(profiles.map(this._profileFactory));
   }
 
   findProfile(username): Observable<Profile> {
