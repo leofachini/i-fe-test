@@ -1,23 +1,32 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { AuthService, ProfileService } from 'src/app/services';
 import { LogoutDialogComponent } from './components/logout-dialog.component';
 import { Profile } from 'src/app/models';
 import { Router } from '@angular/router';
+import { Breadcrumb } from 'src/app/interfaces/breadcrumb.interface';
 
 @Component({
-  selector: 'profile-page',
+  selector: 'mf-profile-page',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss']
 })
-export class ProfilePage implements OnInit, OnDestroy {
+export class ProfilePage implements OnInit {
 
-  activeProfile: Profile;
-
-  private _profileSubscription: Subscription;
+  breadcrumbs: Breadcrumb[] = [
+    {
+      label: 'Home',
+      path: '',
+    },
+    {
+      label: 'Profile',
+      path: 'profile',
+    },
+  ];
+  profileObs: Observable<Profile>;
 
   constructor(
     private _authService: AuthService,
@@ -26,13 +35,7 @@ export class ProfilePage implements OnInit, OnDestroy {
     private _router: Router) { }
 
   ngOnInit(): void {
-    this._subscribeToProfileStream();
-  }
-
-  ngOnDestroy(): void {
-    if (this._profileSubscription) {
-      this._profileSubscription.unsubscribe();
-    }
+    this.profileObs = this._profileService.getActiveProfileObservable();
   }
 
   showLogoutConfirmationDialog(): void {
@@ -47,11 +50,6 @@ export class ProfilePage implements OnInit, OnDestroy {
           this._router.navigate(['login']);
         }
       });
-  }
-
-  private _subscribeToProfileStream(): void {
-    this._profileSubscription = this._profileService.getActiveProfileObservable()
-      .subscribe(profile => this.activeProfile = profile);
   }
 
 }

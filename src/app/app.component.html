@@ -1,6 +1,6 @@
 <header *ngIf="activeProfile">
   <div class="header-content">
-    <!-- TODO: Implement -->
+    <a routerLink="">MyFlix</a>
   </div>
   <button
     [title]="activeProfile.name"
@@ -23,7 +23,7 @@
     </ng-container>
     <ng-container *ngIf="activeProfile.picture">
       <img
-        [src]="activeProfile.picture"
+        [src]="'/assets/' + activeProfile.picture"
         class="profile-picture"
         alt="profile picture"
         >

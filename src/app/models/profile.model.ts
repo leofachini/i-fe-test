@@ -9,10 +9,21 @@ export class Profile {
     public email: string,
     public picture: string,
     public movies: Movie[],
-  ) {
-    if (this.picture) {
-      this.picture = `assets/${this.picture}`;
+    public amountOfWatchedMovies: number = 5,
+  ) { }
+
+  public watchMovie(movie: Movie) {
+    const movieIndex = this.movies.findIndex(m => m.id === movie.id);
+
+    if (movieIndex >= 0) {
+      const firstMovie = this.movies[movieIndex];
+      this.movies.splice(movieIndex, 1);
+      this.movies = [firstMovie, ...this.movies];
+    } else {
+      this.movies = [movie, ...this.movies.splice(0, 4)];
     }
+
+    this.amountOfWatchedMovies += 1;
   }
 
 }

@@ -9,6 +9,7 @@ export class Movie {
     public genres: Genre[],
     public year: number,
     public description: string,
+    public views?: string,
   ) {
     if (this.banner) {
       this.banner = `assets/movies/${this.banner}`;
