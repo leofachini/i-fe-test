@@ -23,17 +23,23 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-Also, worth to notice that it will generate a code coverage report into `./coverage/` folder.
+Also, worth notice that it will generate a code coverage report into `./coverage/` folder.
 
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-
 ## Running lint
 
 Run `ng lint` to execute the linter in the project.
 
+## Generate documentation
+
+Run `npm run doc:gen` to generate project documentation.
+
+## Generate documentation
+
+Run `npm run doc:serve` to serve the generated project documentation.
 
 ## Further help
 
